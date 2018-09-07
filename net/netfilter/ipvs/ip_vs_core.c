@@ -860,20 +860,20 @@ handle_response(int af, struct sk_buff *skb, struct ip_vs_protocol *pp,
 	if (cp->flags & IP_VS_CONN_F_FULLNAT) {
 #ifdef CONFIG_IP_VS_IPV6
 	if (af == AF_INET6) {
-		ret = ip_vs_fnat_response_xmit_v6(skb, pp, cp, ihl);
+		ret = ip_vs_fnat_response_xmit_v6(skb, cp, pp, ihl);
 	} else
 #endif
 		{
-			ret = ip_vs_fnat_response_xmit(skb, pp, cp, ihl);
+			ret = ip_vs_fnat_response_xmit(skb, cp, pp, ihl);
 		}
 	} else {
 #ifdef CONFIG_IP_VS_IPV6
 	if (af == AF_INET6) {
-		ret = ip_vs_normal_response_xmit_v6(skb, pp, cp, ihl);
+		ret = ip_vs_normal_response_xmit_v6(skb, cp, pp, ihl);
 	} else
 #endif
 		{
-			ret = ip_vs_normal_response_xmit(skb, pp, cp, ihl);
+			ret = ip_vs_normal_response_xmit(skb, cp, pp, ihl);
 		}
 	}
 

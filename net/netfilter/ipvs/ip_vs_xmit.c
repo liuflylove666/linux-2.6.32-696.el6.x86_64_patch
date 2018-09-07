@@ -418,8 +418,8 @@ static void ip_vs_nat_icmp_v6(struct sk_buff *skb, struct ip_vs_protocol *pp,
  * Used for NAT/LOCAL.
  */
 int
-ip_vs_normal_response_icmp_xmit(struct sk_buff *skb, struct ip_vs_protocol *pp,
-				struct ip_vs_conn *cp, int offset)
+ip_vs_normal_response_icmp_xmit(struct sk_buff *skb, struct ip_vs_conn *cp,
+				struct ip_vs_protocol *pp, int offset)
 {
 	unsigned int verdict = NF_DROP;
 
@@ -438,9 +438,8 @@ ip_vs_normal_response_icmp_xmit(struct sk_buff *skb, struct ip_vs_protocol *pp,
 #ifdef CONFIG_IP_VS_IPV6
 
 int
-ip_vs_normal_response_icmp_xmit_v6(struct sk_buff *skb,
-				   struct ip_vs_protocol *pp,
-				   struct ip_vs_conn *cp, int offset)
+ip_vs_normal_response_icmp_xmit_v6(struct sk_buff *skb, struct ip_vs_conn *cp,
+				   struct ip_vs_protocol *pp, int offset)
 {
 	unsigned int verdict = NF_DROP;
 
@@ -462,8 +461,8 @@ ip_vs_normal_response_icmp_xmit_v6(struct sk_buff *skb,
  * Used for NAT / local client / FULLNAT.
  */
 int
-ip_vs_fnat_response_icmp_xmit(struct sk_buff *skb, struct ip_vs_protocol *pp,
-			      struct ip_vs_conn *cp, int offset)
+ip_vs_fnat_response_icmp_xmit(struct sk_buff *skb, struct ip_vs_conn *cp,
+			      struct ip_vs_protocol *pp, int offset)
 {
 	struct rtable *rt;	/* Route to the other host */
 	int mtu;
@@ -515,8 +514,8 @@ ip_vs_fnat_response_icmp_xmit(struct sk_buff *skb, struct ip_vs_protocol *pp,
 #ifdef CONFIG_IP_VS_IPV6
 
 int
-ip_vs_fnat_response_icmp_xmit_v6(struct sk_buff *skb, struct ip_vs_protocol *pp,
-				 struct ip_vs_conn *cp, int offset)
+ip_vs_fnat_response_icmp_xmit_v6(struct sk_buff *skb, struct ip_vs_conn *cp, 
+				 struct ip_vs_protocol *pp, int offset)
 {
 	struct rt6_info *rt;	/* Route to the other host */
 	int mtu;

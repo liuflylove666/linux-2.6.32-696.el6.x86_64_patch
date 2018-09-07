@@ -294,7 +294,7 @@ __u32 ip_vs_synproxy_cookie_v6_init_sequence(struct sk_buff *skb,
 
        return secure_tcp_syn_cookie(&iph->saddr, &iph->daddr,
                                     th->source, th->dest, ntohl(th->seq),
-                                    jiffies / (HZ * 60), data);
+                                    data);
 }
 EXPORT_SYMBOL(ip_vs_synproxy_cookie_v6_init_sequence);
 
@@ -313,9 +313,7 @@ int ip_vs_synproxy_v6_cookie_check(struct sk_buff * skb, __u32 cookie,
        __u32 mssind;
        int   ret = 0;
        __u32 res = check_tcp_syn_cookie(cookie, &iph->saddr, &iph->daddr,
-                                        th->source, th->dest, seq,
-                                        jiffies / (HZ * 60),
-                                        COUNTER_TRIES);
+                                        th->source, th->dest, seq);
 
        if(res == (__u32)-1) /* count is invalid, jiffies' >> jiffies */
                goto out;
@@ -324,7 +322,7 @@ int ip_vs_synproxy_v6_cookie_check(struct sk_buff * skb, __u32 cookie,
 
        memset(opt, 0, sizeof(struct ip_vs_synproxy_opt));
 
-       if (mssind < NUM_MSS) {
+       if (mssind < ARRAY_SIZE(msstab)) {
                opt->mss_clamp = msstab[mssind] + 1;
                opt->sack_ok = (res & IP_VS_SYNPROXY_SACKOK_MASK) >> 
                                        IP_VS_SYNPROXY_SACKOK_BIT;

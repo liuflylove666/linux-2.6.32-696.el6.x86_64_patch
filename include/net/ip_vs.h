@@ -875,7 +875,7 @@ struct ip_vs_conn * ip_vs_conn_in_get_proto(int af, const struct sk_buff *skb,
 					    struct ip_vs_protocol *pp,
 					    const struct ip_vs_iphdr *iph,
 					    unsigned int proto_off,
-					    int inverse);
+					    int inverse, int *res_dir);
 
 // struct ip_vs_conn *ip_vs_conn_out_get(const struct ip_vs_conn_param *p);
 
@@ -896,7 +896,7 @@ extern void ip_vs_conn_fill_cport(struct ip_vs_conn *cp, __be16 cport);
 struct ip_vs_conn *ip_vs_conn_new(const struct ip_vs_conn_param *p,
 				  const union nf_inet_addr *daddr,
 				  __be16 dport, unsigned flags,
-				  struct ip_vs_dest *dest, __u32 fwmark
+				  struct ip_vs_dest *dest, __u32 fwmark,
 				  struct sk_buff *mskb, int is_synproxy_on);
 extern void ip_vs_conn_expire_now(struct ip_vs_conn *cp);
 

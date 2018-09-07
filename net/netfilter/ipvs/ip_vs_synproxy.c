@@ -378,7 +378,7 @@ syn_proxy_send_rs_syn(int af, const struct tcphdr *th,
 {
     struct sk_buff *syn_skb;
     int tcp_hdr_size;
-    __u8 tcp_flags = TCPCB_FLAG_SYN;
+    __u8 tcp_flags = TCPHDR_SYN;
     unsigned int tcphoff;
     struct tcphdr *new_th;
 

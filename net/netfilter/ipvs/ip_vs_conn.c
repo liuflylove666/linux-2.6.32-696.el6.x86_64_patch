@@ -432,7 +432,7 @@ ip_vs_conn_in_get_proto(int af, const struct sk_buff *skb,
 	if (ip_vs_conn_fill_param_proto(af, skb, iph, proto_off, inverse, &p))
 		return NULL;
 
-	return ip_vs_conn_in_get(&p, res_dir);
+	return ip_vs_conn_get(&p, res_dir);
 }
 EXPORT_SYMBOL_GPL(ip_vs_conn_in_get_proto);
 
@@ -494,7 +494,7 @@ ip_vs_conn_out_get_proto(int af, const struct sk_buff *skb,
 	if (ip_vs_conn_fill_param_proto(af, skb, iph, proto_off, inverse, &p))
 		return NULL;
 
-	return ip_vs_conn_out_get(&p, res_dir);
+	return ip_vs_conn_get(&p, res_dir);
 }
 EXPORT_SYMBOL_GPL(ip_vs_conn_out_get_proto);
 

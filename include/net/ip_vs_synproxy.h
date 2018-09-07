@@ -42,14 +42,12 @@ struct ip_vs_synproxy_opt {
  * For syncookie compute and check 
  */
 extern __u32 ip_vs_synproxy_cookie_v4_init_sequence(struct sk_buff *skb,
-                            struct ip_vs_synproxy_opt
-                            *opts);
+                            struct ip_vs_synproxy_opt *opts);
 extern int ip_vs_synproxy_v4_cookie_check(struct sk_buff *skb, __u32 cookie,
                       struct ip_vs_synproxy_opt *opt);
 
 extern __u32 ip_vs_synproxy_cookie_v6_init_sequence(struct sk_buff *skb,
-                            struct ip_vs_synproxy_opt
-                            *opts);
+                            struct ip_vs_synproxy_opt *opts);
 extern int ip_vs_synproxy_v6_cookie_check(struct sk_buff *skb, __u32 cookie,
                       struct ip_vs_synproxy_opt *opt);
 
